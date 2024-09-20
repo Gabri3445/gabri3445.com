@@ -7,6 +7,9 @@ export default {
         kaguya: "url('/background.png')",
       },
     },
+    fontFamily: {
+      sans: "Lucida Console, Lucida Sans Unicode, Fira Mono, Consolas, Courier New, Courier, monospace, Times New Roman",
+    },
   },
   plugins: [],
 };
