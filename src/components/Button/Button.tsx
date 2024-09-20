@@ -12,7 +12,7 @@ function Button({ text, onClick, isBig, sideColor }: ButtonProps) {
       onClick={onClick}
     >
       <div className={sideColor + " w-2.5 mr-1.5"}></div>
-      <div className={isBig ? "my-2" : ""}>{text}</div>
+      <div className={isBig ? "my-2" : "text-sm"}>{text}</div>
     </div>
   );
 }
