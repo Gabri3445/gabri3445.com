@@ -5,8 +5,8 @@ import ServerInfo from "./components/ServerInfo/ServerInfo";
 function App() {
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none">
-      <div className="border h-[calc(100vh-2.50rem)] border-cyan-500 m-5 flex flex-col">
-        <div className="w-full bg-cyan-700/75 pl-1 text-xs h-fits leading-tight text-cyan-400">
+      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
+        <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           DISPLAY
         </div>
         <div className="grow flex flex-col">
