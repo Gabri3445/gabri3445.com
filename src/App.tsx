@@ -1,5 +1,5 @@
 function App() {
-  return <div></div>;
+  return <div className="bg-kaguya bg-cover bg-center h-screen"></div>;
 }
 
 export default App;
