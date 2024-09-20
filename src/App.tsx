@@ -1,3 +1,4 @@
+import Button from "./components/Button/Button";
 import ServerInfo from "./components/ServerInfo/ServerInfo";
 
 function App() {
@@ -9,6 +10,9 @@ function App() {
         </div>
         <div>
           <ServerInfo />
+          <div className="ml-4 mt-20">
+            <Button sideColor="bg-fuchsia-300" isBig={true} text="Test" />
+          </div>
         </div>
       </div>
     </div>
