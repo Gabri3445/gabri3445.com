@@ -8,7 +8,7 @@ export interface ButtonProps {
 function Button({ text, onClick, isBig, sideColor }: ButtonProps) {
   return (
     <div
-      className="flex flex-row border border-white/75 w-96 bg-[#36313a]/70 hover:bg-[#59545c]/70 active:bg-[#252127]/70"
+      className="last:mb-0 mb-2 flex flex-row border border-white/75 w-96 bg-[#36313a]/70 hover:bg-[#59545c]/70 active:bg-[#252127]/70"
       onClick={onClick}
     >
       <div className={sideColor + " w-2.5 mr-1.5"}></div>
