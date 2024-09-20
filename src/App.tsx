@@ -1,3 +1,5 @@
+import ServerInfo from "./components/ServerInfo/ServerInfo";
+
 function App() {
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden">
@@ -5,7 +7,9 @@ function App() {
         <div className="w-full bg-cyan-700/75 pl-1 text-xs h-fits leading-tight text-cyan-400">
           DISPLAY
         </div>
-        <div></div>
+        <div>
+          <ServerInfo />
+        </div>
       </div>
     </div>
   );
