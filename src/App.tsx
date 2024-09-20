@@ -1,4 +1,5 @@
 import Button from "./components/Button/Button";
+import Login from "./components/Login/Login";
 import ServerInfo from "./components/ServerInfo/ServerInfo";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
         <div className="grow flex flex-col">
           <ServerInfo />
           <div className="ml-6 mt-20 grow flex flex-col justify-between">
-            <Button sideColor="bg-fuchsia-300" isBig={true} text="Test" />
+            <Login />
             <div className="mb-2">
               <Button
                 sideColor="bg-[#6c1a49]"
@@ -30,3 +31,4 @@ function App() {
 }
 
 export default App;
+// <Button sideColor="bg-fuchsia-300" isBig={true} text="Test" />
