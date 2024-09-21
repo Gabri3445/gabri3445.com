@@ -1,4 +1,4 @@
-import { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCallbackRef } from "use-callback-ref";
 import Button from "../Button/Button";
 
