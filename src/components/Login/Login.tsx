@@ -74,15 +74,13 @@ function Login() {
     */
   }, [currentlySelected.current]);
   useEffect(() => {
+    state.current = LoginState.USERNAME;
+    currentlySelected.current = usernameInput.current;
     document.onclick = handleFocus;
+    usernameInput.current?.focus();
     return () => {
       document.onclick = null;
     };
-  }, []);
-  useEffect(() => {
-    state.current = LoginState.USERNAME;
-    currentlySelected.current = usernameInput.current;
-    usernameInput.current?.focus();
   }, []);
   const onBlur = () => {
     currentlySelected.current = null;
