@@ -1,8 +1,20 @@
+import { useState } from "react";
+import AdminStrip from "./components/AdminStrip/AdminStrip";
 import Button from "./components/Button/Button";
 import Login from "./components/Login/Login";
 import ServerInfo from "./components/ServerInfo/ServerInfo";
+import ButtonList from "./components/ButtonList/ButtonList";
+
+enum AdminState {
+  ADMIN,
+  NONE,
+  LOGIN,
+  ERR,
+}
+//TODO: window state for more windows
 
 function App() {
+  const [adminState, setAdminState] = useState(AdminState.NONE);
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
@@ -11,8 +23,14 @@ function App() {
         </div>
         <div className="grow flex flex-col">
           <ServerInfo />
-          <div className=" mt-20 grow flex flex-col justify-between">
-            <Login />
+          {adminState === AdminState.ERR || adminState === AdminState.ADMIN ? (
+            <div className="mt-4 mb-8">
+              <AdminStrip error={adminState === AdminState.ERR} />
+            </div>
+          ) : null}
+          <div className=" mt-8 grow flex flex-col justify-between">
+            {adminState === AdminState.LOGIN && <Login />}
+            {adminState !== AdminState.ADMIN && <ButtonList />}
             <div className="mb-2 ml-6">
               <Button
                 sideColor="bg-[#6c1a49]"
