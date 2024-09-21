@@ -4,16 +4,16 @@ import ServerInfo from "./components/ServerInfo/ServerInfo";
 
 function App() {
   return (
-    <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none">
+    <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
         <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           DISPLAY
         </div>
         <div className="grow flex flex-col">
           <ServerInfo />
-          <div className="ml-6 mt-20 grow flex flex-col justify-between">
+          <div className=" mt-20 grow flex flex-col justify-between">
             <Login />
-            <div className="mb-2">
+            <div className="mb-2 ml-6">
               <Button
                 sideColor="bg-[#6c1a49]"
                 isBig={false}
