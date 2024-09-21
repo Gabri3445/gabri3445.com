@@ -108,7 +108,9 @@ function Login() {
   };
   return (
     <div onKeyDown={handleKeyDown}>
-      <div className="w-full bg-black h-52 relative flex flex-col justify-between">
+      <div
+        className={`w-full h-52 relative flex flex-col justify-between ${state.current === LoginState.FAIL ? "bg-[#691144]/90" : "bg-black"}`}
+      >
         <div className="text-2xl pt-7 pl-4">Login {renderStatus()}</div>
         <div className="top-1/2 -translate-y-1/2 transform absolute w-full">
           <div
