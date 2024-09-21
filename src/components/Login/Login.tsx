@@ -9,10 +9,6 @@ enum LoginState {
   FAIL,
 }
 
-export interface LoginProps {
-  bodyOnMouseDown: FocusEvent;
-}
-
 function Login() {
   const usernameInput = useRef<HTMLInputElement>(null);
   const [username, setUsername] = useState("");
@@ -75,18 +71,11 @@ function Login() {
     It just stays on whatever the value was when the event listener was added
     I fucking hate react
     */
-    //document.removeEventListener("click", handleFocus);
-    //document.addEventListener("click", handleFocus);
-    //document.onclick = handleFocus;
-    //currentlySelected?.current?.focus();
-    //console.log(state);
   }, [currentlySelected.current]);
   useEffect(() => {
-    //document.addEventListener("click", handleFocus);
     document.onclick = handleFocus;
     return () => {
       document.onclick = null;
-      //document.removeEventListener("click", handleFocus);
     };
   }, []);
   useEffect(() => {
