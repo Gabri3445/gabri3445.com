@@ -97,6 +97,15 @@ function Login() {
         return <></>;
     }
   };
+  const onLoginButtonClick = () => {
+    state.current = LoginState.SUCCESS;
+    if (usernameInput.current && passwordInput.current) {
+      usernameInput.current.disabled = true;
+      passwordInput.current.disabled = true;
+    }
+    setUsername(correctUsername);
+    setPassword(correctPassword);
+  };
   return (
     <div onKeyDown={handleKeyDown}>
       <div className="w-full bg-black h-52 relative flex flex-col justify-between">
@@ -126,7 +135,7 @@ function Login() {
         </div>
         {/*complete button goes here*/}
       </div>
-      {/*buttons go here*/}
+      {/*TODO: make the buttons a separate component?*/}
       <div
         className={`flex flex-row mt-4 ml-6 gap-7 ${state.current === LoginState.SUCCESS || state.current === LoginState.FAIL ? "hidden" : ""}`}
       >
@@ -135,7 +144,9 @@ function Login() {
           isBig={true}
           width="w-80"
           sideColor="bg-black"
+          onClick={onLoginButtonClick}
         />
+        {/*TODO: make the cancel button go back to the main page*/}
         <Button
           text={`Cancel`}
           isBig={true}
