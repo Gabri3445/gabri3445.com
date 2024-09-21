@@ -1,6 +1,7 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCallbackRef } from "use-callback-ref";
 import Button from "../Button/Button";
+import { AdminState } from "../../App.models";
 
 enum LoginState {
   USERNAME,
@@ -10,7 +11,11 @@ enum LoginState {
   FAIL,
 }
 
-function Login() {
+export interface LoginProps {
+  setAdminState: (state: AdminState) => void;
+}
+
+function Login({ setAdminState }: LoginProps) {
   const usernameInput = useRef<HTMLInputElement>(null);
   const [username, setUsername] = useState("");
   const correctUsername = "admin";
@@ -155,6 +160,7 @@ function Login() {
               sideColor="bg-black"
               width="w-32"
               height="h-8"
+              onClick={() => setAdminState(AdminState.ADMIN)}
             />
           </div>
         ) : null}
@@ -166,6 +172,7 @@ function Login() {
               sideColor="bg-black"
               width="w-44"
               height="h-[1.85rem]"
+              onClick={() => setAdminState(AdminState.NONE)}
             />
             <Button
               text="Retry"
@@ -189,12 +196,12 @@ function Login() {
           sideColor="bg-black"
           onClick={onLoginButtonClick}
         />
-        {/*TODO: make the cancel button go back to the main page*/}
         <Button
           text={`Cancel`}
           isBig={true}
           width="w-28"
           sideColor="bg-[#6c1a49]"
+          onClick={() => setAdminState(AdminState.NONE)}
         />
       </div>
       <input
