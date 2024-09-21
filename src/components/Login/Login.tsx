@@ -86,12 +86,20 @@ function Login() {
   const onBlur = () => {
     currentlySelected.current = null;
   };
+  const renderStatus = () => {
+    switch (state.current) {
+      case LoginState.SUCCESS:
+        return <span className="text-[#04a37b]">Successful</span>;
+      case LoginState.FAIL:
+        return <span className="text-[#bf0541]">Failed</span>;
+      default:
+        return <></>;
+    }
+  };
   return (
     <div onKeyDown={handleKeyDown}>
       <div className="w-full bg-black h-52 relative flex flex-col justify-between">
-        <div className="text-2xl pt-7 pl-4">
-          Login {state.current === LoginState.SUCCESS ? "Successful" : "Failed"}
-        </div>
+        <div className="text-2xl pt-7 pl-4">Login {renderStatus()}</div>
         <div className="top-1/2 -translate-y-1/2 transform absolute w-full">
           <div
             className={
