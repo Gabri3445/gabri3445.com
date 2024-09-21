@@ -4,17 +4,12 @@ import Button from "./components/Button/Button";
 import Login from "./components/Login/Login";
 import ServerInfo from "./components/ServerInfo/ServerInfo";
 import ButtonList from "./components/ButtonList/ButtonList";
+import { AdminState } from "./App.models";
 
-enum AdminState {
-  ADMIN,
-  NONE,
-  LOGIN,
-  ERR,
-}
 //TODO: window state for more windows
 
 function App() {
-  const [adminState, setAdminState] = useState(AdminState.NONE);
+  const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
