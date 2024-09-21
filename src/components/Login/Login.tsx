@@ -1,5 +1,6 @@
 import { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCallbackRef } from "use-callback-ref";
+import Button from "../Button/Button";
 
 enum LoginState {
   USERNAME,
@@ -126,6 +127,22 @@ function Login() {
         {/*complete button goes here*/}
       </div>
       {/*buttons go here*/}
+      <div
+        className={`flex flex-row mt-4 ml-6 gap-7 ${state.current === LoginState.SUCCESS || state.current === LoginState.FAIL ? "hidden" : ""}`}
+      >
+        <Button
+          text={`Login - User: ${correctUsername} Pass: ${correctPassword}`}
+          isBig={true}
+          width="w-80"
+          sideColor="bg-black"
+        />
+        <Button
+          text={`Cancel`}
+          isBig={true}
+          width="w-28"
+          sideColor="bg-[#6c1a49]"
+        />
+      </div>
       <input
         ref={usernameInput}
         onChange={(e) => {
