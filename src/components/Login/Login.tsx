@@ -104,10 +104,23 @@ function Login() {
     setUsername(correctUsername);
     setPassword(correctPassword);
   };
+  const onRetryButtonClick = () => {
+    state.current = LoginState.USERNAME;
+    if (usernameInput.current && passwordInput.current) {
+      usernameInput.current.disabled = false;
+      passwordInput.current.disabled = false;
+      usernameInput.current.value = "";
+      passwordInput.current.value = "";
+    }
+    currentlySelected.current = usernameInput.current;
+    usernameInput.current?.focus();
+    setUsername("");
+    setPassword("");
+  };
   return (
     <div onKeyDown={handleKeyDown}>
       <div
-        className={`w-full h-52 relative flex flex-col justify-between ${state.current === LoginState.FAIL ? "bg-[#691144]/90" : "bg-black"}`}
+        className={`w-full h-52 relative flex flex-col justify-between ${state.current === LoginState.FAIL ? "bg-[#691144]/90" : "bg-[#0f0f0f]"}`}
       >
         <div className="text-2xl pt-7 pl-4">Login {renderStatus()}</div>
         <div className="top-1/2 -translate-y-1/2 transform absolute w-full">
@@ -142,6 +155,25 @@ function Login() {
               sideColor="bg-black"
               width="w-32"
               height="h-8"
+            />
+          </div>
+        ) : null}
+        {state.current === LoginState.FAIL ? (
+          <div className="flex flex-row ml-4 mb-9 gap-1.5">
+            <Button
+              text="Back"
+              isBig={true}
+              sideColor="bg-black"
+              width="w-44"
+              height="h-[1.85rem]"
+            />
+            <Button
+              text="Retry"
+              isBig={true}
+              sideColor="bg-black"
+              width="w-44"
+              height="h-[1.85rem]"
+              onClick={onRetryButtonClick}
             />
           </div>
         ) : null}
