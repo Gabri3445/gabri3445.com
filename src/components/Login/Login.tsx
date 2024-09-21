@@ -133,7 +133,18 @@ function Login() {
             password : {"*".repeat(password.length)}
           </div>
         </div>
-        {/*complete button goes here*/}
+        {/*TODO: complete button brings back to the home page with admin status*/}
+        {state.current === LoginState.SUCCESS ? (
+          <div className="ml-4 mb-10">
+            <Button
+              text="Complete"
+              isBig={true}
+              sideColor="bg-black"
+              width="w-32"
+              height="h-8"
+            />
+          </div>
+        ) : null}
       </div>
       {/*TODO: make the buttons a separate component?*/}
       <div
