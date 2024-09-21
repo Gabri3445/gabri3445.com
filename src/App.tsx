@@ -9,7 +9,7 @@ import { AdminState } from "./App.models";
 //TODO: window state for more windows
 
 function App() {
-  const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
+  const [adminState, setAdminState] = useState<AdminState>(AdminState.NONE);
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
@@ -24,7 +24,9 @@ function App() {
             </div>
           ) : null}
           <div className=" mt-8 grow flex flex-col justify-between">
-            {adminState === AdminState.LOGIN && <Login />}
+            {adminState === AdminState.LOGIN && (
+              <Login setAdminState={setAdminState} />
+            )}
             {adminState !== AdminState.ADMIN && <ButtonList />}
             <div className="mb-2 ml-6">
               <Button
