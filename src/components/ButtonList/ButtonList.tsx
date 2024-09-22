@@ -34,6 +34,20 @@ function ButtonList({
       }
     }
   };
+  const goToLink = (link: string) => {
+    if (checkForAdmin()) {
+      window.open(link, "_blank");
+      return;
+    }
+    setAdminState(AdminState.ERR);
+  };
+  const copy = (string: string) => {
+    if (checkForAdmin()) {
+      navigator.clipboard.writeText(string);
+      return;
+    }
+    setAdminState(AdminState.ERR);
+  };
   return (
     <div>
       <Button
@@ -48,18 +62,23 @@ function ButtonList({
         isBig={true}
         sideColor={color(false)}
         height="h-12"
+        onClick={() => goToLink("https://github.com/Gabri3445")}
       />
       <Button
         text="LinkedIn"
         isBig={true}
         sideColor={color(false)}
         height="h-12"
+        onClick={() =>
+          goToLink("https://www.linkedin.com/in/gabriele-lopez-8514bb215/")
+        }
       />
       <Button
         text="Copy Discord Username"
         isBig={true}
         sideColor={color(false)}
         height="h-12"
+        onClick={() => copy("gabri3445")}
       />
       {/* TODO after the site is finished
       <Button
