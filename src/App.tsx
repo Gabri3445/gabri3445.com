@@ -27,7 +27,14 @@ function App() {
             {adminState === AdminState.LOGIN && (
               <Login setAdminState={setAdminState} />
             )}
-            {adminState !== AdminState.ADMIN && <ButtonList />}
+            {adminState !== AdminState.LOGIN && (
+              <div className="ml-6 mt-8">
+                <ButtonList
+                  adminState={adminState}
+                  setAdminState={setAdminState}
+                />
+              </div>
+            )}
             <div className="mb-2 ml-6">
               <Button
                 sideColor="bg-[#6c1a49]"
