@@ -1,12 +1,17 @@
-import { AdminState } from "../../App.models";
+import { AdminState, WindowState } from "../../App.models";
 import Button from "../Button/Button";
 
 export interface ButtonListProps {
   adminState: AdminState;
   setAdminState: (state: AdminState) => void;
+  setWindowState: (state: WindowState) => void;
 }
 
-function ButtonList({ adminState, setAdminState }: ButtonListProps) {
+function ButtonList({
+  adminState,
+  setAdminState,
+  setWindowState,
+}: ButtonListProps) {
   const checkForAdmin = () => {
     if (adminState === AdminState.ADMIN) {
       return true;
@@ -36,7 +41,7 @@ function ButtonList({ adminState, setAdminState }: ButtonListProps) {
         isBig={true}
         sideColor={color(true)}
         height="h-12"
-        onClick={() => setAdminState(AdminState.LOGIN)}
+        onClick={() => setWindowState(WindowState.LOGIN)}
       />
       <Button
         text="Github"

@@ -4,3 +4,8 @@ export enum AdminState {
   LOGIN,
   ERR,
 }
+
+export enum WindowState {
+  MAIN,
+  LOGIN,
+}

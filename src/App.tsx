@@ -4,12 +4,11 @@ import Button from "./components/Button/Button";
 import Login from "./components/Login/Login";
 import ServerInfo from "./components/ServerInfo/ServerInfo";
 import ButtonList from "./components/ButtonList/ButtonList";
-import { AdminState } from "./App.models";
-
-//TODO: window state for more windows
+import { AdminState, WindowState } from "./App.models";
 
 function App() {
   const [adminState, setAdminState] = useState<AdminState>(AdminState.NONE);
+  const [windowState, setWindowState] = useState<WindowState>(WindowState.MAIN);
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
@@ -24,14 +23,18 @@ function App() {
             </div>
           ) : null}
           <div className=" mt-8 grow flex flex-col justify-between">
-            {adminState === AdminState.LOGIN && (
-              <Login setAdminState={setAdminState} />
+            {windowState === WindowState.LOGIN && (
+              <Login
+                setAdminState={setAdminState}
+                setWindowState={setWindowState}
+              />
             )}
-            {adminState !== AdminState.LOGIN && (
+            {windowState === WindowState.MAIN && (
               <div className="ml-6 mt-8">
                 <ButtonList
                   adminState={adminState}
                   setAdminState={setAdminState}
+                  setWindowState={setWindowState}
                 />
               </div>
             )}

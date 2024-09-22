@@ -1,7 +1,7 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCallbackRef } from "use-callback-ref";
 import Button from "../Button/Button";
-import { AdminState } from "../../App.models";
+import { AdminState, WindowState } from "../../App.models";
 
 enum LoginState {
   USERNAME,
@@ -13,9 +13,10 @@ enum LoginState {
 
 export interface LoginProps {
   setAdminState: (state: AdminState) => void;
+  setWindowState: (state: WindowState) => void;
 }
 
-function Login({ setAdminState }: LoginProps) {
+function Login({ setAdminState, setWindowState }: LoginProps) {
   const usernameInput = useRef<HTMLInputElement>(null);
   const [username, setUsername] = useState("");
   const correctUsername = "admin";
@@ -151,7 +152,6 @@ function Login({ setAdminState }: LoginProps) {
             password : {"*".repeat(password.length)}
           </div>
         </div>
-        {/*TODO: complete button brings back to the home page with admin status*/}
         {state.current === LoginState.SUCCESS ? (
           <div className="ml-4 mb-10">
             <Button
@@ -160,7 +160,10 @@ function Login({ setAdminState }: LoginProps) {
               sideColor="bg-black"
               width="w-32"
               height="h-8"
-              onClick={() => setAdminState(AdminState.ADMIN)}
+              onClick={() => {
+                setAdminState(AdminState.ADMIN);
+                setWindowState(WindowState.MAIN);
+              }}
             />
           </div>
         ) : null}
@@ -172,7 +175,9 @@ function Login({ setAdminState }: LoginProps) {
               sideColor="bg-black"
               width="w-44"
               height="h-[1.85rem]"
-              onClick={() => setAdminState(AdminState.NONE)}
+              onClick={() => {
+                setWindowState(WindowState.MAIN);
+              }}
             />
             <Button
               text="Retry"
@@ -201,7 +206,9 @@ function Login({ setAdminState }: LoginProps) {
           isBig={true}
           width="w-28"
           sideColor="bg-[#6c1a49]"
-          onClick={() => setAdminState(AdminState.NONE)}
+          onClick={() => {
+            setWindowState(WindowState.MAIN);
+          }}
         />
       </div>
       <input
