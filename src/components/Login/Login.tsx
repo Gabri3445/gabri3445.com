@@ -21,7 +21,23 @@ function Login({ setAdminState, setWindowState }: LoginProps) {
   const [username, setUsername] = useState("");
   const correctUsername = "admin";
   const [password, setPassword] = useState("");
-  const correctPassword = ":3";
+  const correctPasswords = [
+    ":3",
+    ">:3",
+    "uwu",
+    "owo",
+    "bscotchpie",
+    "labyrinths",
+    "bit",
+    "beepboop",
+    "toaster",
+    "poggers",
+    "mancinimorto",
+    "giglo152",
+  ];
+  const [correctPassword] = useState(
+    () => correctPasswords[Math.floor(Math.random() * correctPasswords.length)],
+  );
   const passwordInput = useRef<HTMLInputElement>(null);
   const [, forceUpdate] = useState(0);
   const currentlySelected = useCallbackRef<HTMLInputElement | null>(
