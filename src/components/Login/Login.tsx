@@ -194,10 +194,11 @@ function Login({ setAdminState, setWindowState }: LoginProps) {
       <div
         className={`flex flex-row mt-4 ml-6 gap-7 ${state.current === LoginState.SUCCESS || state.current === LoginState.FAIL ? "hidden" : ""}`}
       >
+        {/*bit of hack to make sure the text doesn't overflow*/}
         <Button
           text={`Login - User: ${correctUsername} Pass: ${correctPassword}`}
           isBig={true}
-          width="w-80"
+          width="min-w-80 pr-3"
           sideColor="bg-black"
           onClick={onLoginButtonClick}
         />
