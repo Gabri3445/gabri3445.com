@@ -73,13 +73,6 @@ function Login({ setAdminState, setWindowState }: LoginProps) {
     }
   };
   useEffect(() => {
-    /*
-    If I don't remove and add the event listeners the variables that use useState don't update
-    It just stays on whatever the value was when the event listener was added
-    I fucking hate react
-    */
-  }, [currentlySelected.current]);
-  useEffect(() => {
     state.current = LoginState.USERNAME;
     currentlySelected.current = usernameInput.current;
     document.onclick = handleFocus;
