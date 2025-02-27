@@ -6,6 +6,10 @@ export interface FileNode {
   children?: FileNode[]; // Only present if it's a folder
   url?: string; // Only present if it's a file
 }
+/*
+// add text files
+// read from markdown files?
+*/
 
 function FileSystem() {
   const fileSystems: FileNode[] = [
