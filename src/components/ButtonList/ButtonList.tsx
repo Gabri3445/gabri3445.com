@@ -48,6 +48,13 @@ function ButtonList({
     }
     setAdminState(AdminState.ERR);
   };
+  const openFileView = () => {
+    if (checkForAdmin()) {
+      setWindowState(WindowState.FILE_VIEW);
+      return;
+    }
+    setAdminState(AdminState.ERR);
+  };
   return (
     <div>
       <Button
@@ -79,6 +86,13 @@ function ButtonList({
         sideColor={color(false)}
         height="h-12"
         onClick={() => copy("gabri3445")}
+      />
+      <Button
+        text="Stuff"
+        isBig={true}
+        sideColor={color(false)}
+        height="h-12"
+        onClick={() => openFileView()}
       />
       {/* TODO after the site is finished
       <Button

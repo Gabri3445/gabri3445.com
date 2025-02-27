@@ -8,4 +8,5 @@ export enum AdminState {
 export enum WindowState {
   MAIN,
   LOGIN,
+  FILE_VIEW,
 }

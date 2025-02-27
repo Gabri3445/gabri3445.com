@@ -24,11 +24,13 @@ function Login({ setAdminState, setWindowState }: LoginProps) {
   const correctPasswords = [
     ":3",
     ">:3",
+    ":3c",
     "uwu",
     "owo",
     "bscotchpie",
     "labyrinths",
     "bit",
+    "byte",
     "beepboop",
     "toaster",
     "poggers",
@@ -199,7 +201,6 @@ function Login({ setAdminState, setWindowState }: LoginProps) {
           </div>
         ) : null}
       </div>
-      {/*TODO: make the buttons a separate component?*/}
       <div
         className={`flex flex-row mt-4 ml-6 gap-7 ${state.current === LoginState.SUCCESS || state.current === LoginState.FAIL ? "hidden" : ""}`}
       >

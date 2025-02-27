@@ -4,7 +4,8 @@ export interface ButtonProps {
   height?: string;
   width?: string;
   isBig: boolean;
-  sideColor: string;
+  sideColor?: string;
+  centered?: boolean;
 }
 
 function Button({
@@ -14,6 +15,7 @@ function Button({
   width,
   isBig,
   sideColor,
+  centered,
 }: ButtonProps) {
   return (
     <div
@@ -21,10 +23,16 @@ function Button({
       bg-[#36313a]/70 hover:bg-[#59545c]/70 active:bg-[#252127]/70`}
       onClick={onClick}
     >
-      <div className={sideColor + " w-2.5 mr-1.5"}></div>
-      <div className={isBig ? "my-auto" : "text-sm my-auto"}>{text}</div>
+      {sideColor && <div className={sideColor + " w-2.5 mr-1.5"}></div>}
+      <div
+        className={`${isBig ? "" : "text-sm"} my-auto ${centered ? "mx-auto" : ""}`}
+      >
+        {text}
+      </div>
     </div>
   );
 }
+
+// isBig ? "my-auto" : "text-sm my-auto mx-auto"
 
 export default Button;
