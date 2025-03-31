@@ -15,6 +15,7 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
           centered={false}
           sideColor="bg-[#837e84]"
           onClick={() => window.open(node.url, "_blank")}
+          addBorderLast={true}
         />
       </div>
     );
@@ -29,6 +30,7 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
         centered={false}
         sideColor="bg-[#837e84]"
         onClick={() => setExpanded(!expanded)}
+        addBorderLast={true}
       />
       {expanded &&
         node.children?.map((child) => (
