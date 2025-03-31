@@ -1,4 +1,4 @@
-# gabri3445.ddns.net
+# gabri3445.com
 
 Source for [gabri3445.com](https://gabri3445.com)\
 Made with vite\
