@@ -7,7 +7,7 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
 
   if (node.type === "file") {
     return (
-      <div className={`ml-6`}>
+      <div className={`mx-6`}>
         <Button
           text={node.name}
           isBig={false}
@@ -22,7 +22,7 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
   }
 
   return (
-    <div className={`ml-6`}>
+    <div className={`mx-6`}>
       <Button
         text={node.name}
         isBig={false}
