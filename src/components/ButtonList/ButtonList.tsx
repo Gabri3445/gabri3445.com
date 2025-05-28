@@ -65,21 +65,21 @@ function ButtonList({
         onClick={() => setWindowState(WindowState.LOGIN)}
       />
       <Button
-        text="Github"
+        text="Open Github"
         isBig={true}
         sideColor={color(false)}
         height="h-12"
         onClick={() => goToLink("https://github.com/Gabri3445")}
       />
       <Button
-        text="Source"
+        text="View Source"
         isBig={true}
         sideColor={color(false)}
         height="h-12"
         onClick={() => goToLink("https://github.com/Gabri3445/gabri3445.com")}
       />
       <Button
-        text="LinkedIn"
+        text="Open LinkedIn"
         isBig={true}
         sideColor={color(false)}
         height="h-12"
@@ -95,7 +95,7 @@ function ButtonList({
         onClick={() => copy("gabri3445")}
       />
       <Button
-        text="Stuff"
+        text="View Filesystem"
         isBig={true}
         sideColor={color(false)}
         height="h-12"
