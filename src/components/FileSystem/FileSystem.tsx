@@ -7,7 +7,7 @@ export interface FileNode {
   url?: string; // Only present if it's a file
 }
 /*
-// add text files
+// TODO: add text files
 // read from markdown files?
 */
 
@@ -22,13 +22,24 @@ function FileSystem() {
           type: "folder",
           children: [
             {
-              name: "/march",
+              name: "/03",
               type: "folder",
               children: [
                 {
                   name: "30-levante.lnk",
                   type: "file",
                   url: "https://photos.gabri3445.com/share/g_YZ9b-5GOHT_2x1jZM8ln2RBRBkqpP3Pe8gfgEQe3dSbclVKXq6CLTJgaKYwrk2Tao",
+                },
+              ],
+            },
+            {
+              name: "/05",
+              type: "folder",
+              children: [
+                {
+                  name: "05-levante.lnk",
+                  type: "file",
+                  url: "https://photos.gabri3445.com/share/BaY2zPAfl2OFZQ76tUsRz99oJG2GTeIAolFA4pp4P1VSWbt9HbxM8R3auhvwwx70490",
                 },
               ],
             },
@@ -49,7 +60,7 @@ function FileSystem() {
     },
   ];
 
-  //TODO: should probably set up overflow sooner then later
+  //TODO: should probably set up overflow sooner then later; next time
   return (
     <div className="w-full mt-4">
       {fileSystems.map((fileSystem) => (
