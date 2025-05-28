@@ -72,6 +72,13 @@ function ButtonList({
         onClick={() => goToLink("https://github.com/Gabri3445")}
       />
       <Button
+        text="Source"
+        isBig={true}
+        sideColor={color(false)}
+        height="h-12"
+        onClick={() => goToLink("https://github.com/Gabri3445/gabri3445.com")}
+      />
+      <Button
         text="LinkedIn"
         isBig={true}
         sideColor={color(false)}
