@@ -22,6 +22,17 @@ function FileSystem() {
           type: "folder",
           children: [
             {
+              name: "/06",
+              type: "folder",
+              children: [
+                {
+                  name: "02-mercadante.lnk",
+                  type: "file",
+                  url: "https://photos.gabri3445.com/share/64_7V-w6TOw6KlAf8QCDNt3yZZyVZ8nwUN07fqbqoG38R_6eRoWnnLSrQ70RImDcMWE",
+                },
+              ],
+            },
+            {
               name: "/05",
               type: "folder",
               children: [
