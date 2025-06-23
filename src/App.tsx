@@ -69,6 +69,7 @@ function App() {
                 ></Button>
               </div>
             </div>
+            {/*TODO: switch to markdown renderer when a file is selected; zustand?*/}
             <FileSystem />
           </div>
         )}

@@ -5,7 +5,7 @@ import { FileNode } from "../FileSystem";
 function FileTree({ node, level }: { node: FileNode; level: number }) {
   const [expanded, setExpanded] = useState(false);
 
-  if (node.type === "file") {
+  if (node.type === "link") {
     return (
       <div className={`mx-6`}>
         <Button
@@ -19,6 +19,11 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
         />
       </div>
     );
+  }
+
+  if (node.type === "file") {
+    //TODO open the corresponding markdown file on onclick; refer to app.tsx
+    return;
   }
 
   return (

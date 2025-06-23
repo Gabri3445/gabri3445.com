@@ -1,8 +1,9 @@
 import FileTree from "./FileTree/FileTree";
+import markdowncontent from "../../markdown/test.md?raw";
 
 export interface FileNode {
   name: string;
-  type: "file" | "folder";
+  type: "file" | "folder" | "link";
   children?: FileNode[]; // Only present if it's a folder
   url?: string; // Only present if it's a file
 }
@@ -13,6 +14,10 @@ export interface FileNode {
 
 function FileSystem() {
   const fileSystems: FileNode[] = [
+    {
+      name: "/blog",
+      type: "folder",
+    },
     {
       name: "/photos",
       type: "folder",
@@ -27,7 +32,7 @@ function FileSystem() {
               children: [
                 {
                   name: "02-mercadante.lnk",
-                  type: "file",
+                  type: "link",
                   url: "https://photos.gabri3445.com/share/64_7V-w6TOw6KlAf8QCDNt3yZZyVZ8nwUN07fqbqoG38R_6eRoWnnLSrQ70RImDcMWE",
                 },
               ],
@@ -38,7 +43,7 @@ function FileSystem() {
               children: [
                 {
                   name: "10-levante.lnk",
-                  type: "file",
+                  type: "link",
                   url: "https://photos.gabri3445.com/share/BaY2zPAfl2OFZQ76tUsRz99oJG2GTeIAolFA4pp4P1VSWbt9HbxM8R3auhvwwx70490",
                 },
               ],
@@ -49,7 +54,7 @@ function FileSystem() {
               children: [
                 {
                   name: "30-levante.lnk",
-                  type: "file",
+                  type: "link",
                   url: "https://photos.gabri3445.com/share/g_YZ9b-5GOHT_2x1jZM8ln2RBRBkqpP3Pe8gfgEQe3dSbclVKXq6CLTJgaKYwrk2Tao",
                 },
               ],
@@ -62,7 +67,7 @@ function FileSystem() {
           children: [
             {
               name: "Germany.lnk",
-              type: "file",
+              type: "link",
               url: "https://photos.gabri3445.com/share/fmqI_WFtPJHweGqHi_5nm4sOvFP8UTsUu-yx292a_Z8Ln4iz7KxkExWySTiXksd8oWA",
             },
           ],
@@ -70,6 +75,8 @@ function FileSystem() {
       ],
     },
   ];
+
+  console.log(markdowncontent);
 
   //TODO: should probably set up overflow sooner then later; next time
   return (
