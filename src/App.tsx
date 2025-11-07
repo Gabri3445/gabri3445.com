@@ -16,7 +16,8 @@ function App() {
         <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           DISPLAY
         </div>
-        {windowState !== WindowState.FILE_VIEW && (
+        {(windowState === WindowState.LOGIN ||
+          windowState === WindowState.MAIN) && (
           <div className="grow flex flex-col">
             <ServerInfo />
             {adminState === AdminState.ERR ||
