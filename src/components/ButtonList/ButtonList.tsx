@@ -1,17 +1,11 @@
 import { AdminState, WindowState } from "../../App.models";
+import { useAdminStore } from "../../stores/useAdminStore";
+import { useWindowStore } from "../../stores/useWindowStore";
 import Button from "../Button/Button";
 
-export interface ButtonListProps {
-  adminState: AdminState;
-  setAdminState: (state: AdminState) => void;
-  setWindowState: (state: WindowState) => void;
-}
-
-function ButtonList({
-  adminState,
-  setAdminState,
-  setWindowState,
-}: ButtonListProps) {
+function ButtonList() {
+  const { adminState, setAdminState } = useAdminStore();
+  const { setWindowState } = useWindowStore();
   const checkForAdmin = () => {
     if (adminState === AdminState.ADMIN) {
       return true;
@@ -50,7 +44,7 @@ function ButtonList({
   };
   const openFileView = () => {
     if (checkForAdmin()) {
-      setWindowState(WindowState.FILE_VIEW);
+      setWindowState(WindowState.FILE_SYSTEM);
       return;
     }
     setAdminState(AdminState.ERR);

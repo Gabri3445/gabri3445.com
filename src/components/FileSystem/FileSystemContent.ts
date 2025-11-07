@@ -1,9 +1,20 @@
-import { FileNode } from "./FileSystem";
+import helloWorldPost from "../../markdown/HelloWorld.md?raw";
+
+export interface FileNode {
+  name: string;
+  type: "file" | "folder" | "link";
+  children?: FileNode[]; // Only present if it's a folder
+  url?: string; // Only present if it's a link
+  markdownContents?: string; // Only present if it's a file
+}
 
 export const fileSystemContent: FileNode[] = [
   {
     name: "/blog",
     type: "folder",
+    children: [
+      { name: "HelloWorld.md", type: "file", markdownContents: helloWorldPost },
+    ],
   },
   {
     name: "/photos",
