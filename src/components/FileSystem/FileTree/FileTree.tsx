@@ -23,7 +23,19 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
 
   if (node.type === "file") {
     //TODO open the corresponding markdown file on onclick; refer to app.tsx
-    return;
+    return (
+      <div className={`mx-6`}>
+        <Button
+          text={node.name}
+          isBig={false}
+          width="w-full"
+          centered={false}
+          sideColor="bg-[#837e84]"
+          onClick={() => {}} //switch to markown renderer
+          addBorderLast={true}
+        />
+      </div>
+    );
   }
 
   return (
