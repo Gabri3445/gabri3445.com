@@ -1,4 +1,4 @@
-import testBlogPost from "../../markdown/test.md?raw";
+import helloWorldPost from "../../markdown/HelloWorld.md?raw";
 
 export interface FileNode {
   name: string;
@@ -13,7 +13,7 @@ export const fileSystemContent: FileNode[] = [
     name: "/blog",
     type: "folder",
     children: [
-      { name: "test.md", type: "file", markdownContents: testBlogPost },
+      { name: "HelloWorld.md", type: "file", markdownContents: helloWorldPost },
     ],
   },
   {

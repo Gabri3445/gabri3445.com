@@ -91,20 +91,8 @@ function App() {
               </div>
             </div>{" "}
             {/*move the markdown renderer to its own component*/}
-            <div className="mt-2 ml-1">
-              <Markdown
-                options={{
-                  overrides: {
-                    h1: {
-                      props: {
-                        className: "text-2xl",
-                      },
-                    },
-                  },
-                }}
-              >
-                {fileNode?.markdownContents}
-              </Markdown>
+            <div className="mt-2 ml-1 prose prose-invert font-sans">
+              <Markdown>{fileNode?.markdownContents}</Markdown>
             </div>
           </div>
         )}
