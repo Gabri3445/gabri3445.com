@@ -8,8 +8,10 @@ import { AdminState, WindowState } from "./App.models";
 import FileSystem from "./components/FileSystem/FileSystem";
 
 function App() {
-  const [adminState, setAdminState] = useState<AdminState>(AdminState.NONE);
-  const [windowState, setWindowState] = useState<WindowState>(WindowState.MAIN);
+  const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
+  const [windowState, setWindowState] = useState<WindowState>(
+    WindowState.FILE_VIEW,
+  );
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
@@ -55,7 +57,7 @@ function App() {
             </div>
           </div>
         )}
-        {windowState === WindowState.FILE_VIEW && (
+        {windowState === WindowState.FILE_SYSTEM && (
           <div className="grow flex flex-col">
             <div className="w-full flex flex-row justify-between">
               <div className="text-3xl mt-2 ml-1">gabri3445 PC File System</div>
@@ -72,6 +74,25 @@ function App() {
             </div>
             {/*TODO: switch to markdown renderer when a file is selected; zustand?*/}
             <FileSystem />
+          </div>
+        )}
+        {windowState === WindowState.FILE_VIEW && (
+          <div className="grow flex flex-col">
+            <div className="w-full flex flex-row justify-between">
+              <div className="text-3xl mt-2 ml-1">File name goes here</div>
+              <div className="mt-2 mr-2">
+                <Button
+                  text="&lt;-" //TODO: center the dash char
+                  isBig={false}
+                  height="h-6"
+                  width="w-6"
+                  onClick={() => setWindowState(WindowState.MAIN)}
+                  centered={true}
+                ></Button>
+              </div>
+            </div>
+            {/*TODO: switch to markdown renderer when a file is selected; zustand?*/}
+            <div className="mt-2 ml-1">Test</div>
           </div>
         )}
       </div>

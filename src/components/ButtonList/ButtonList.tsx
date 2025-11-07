@@ -50,7 +50,7 @@ function ButtonList({
   };
   const openFileView = () => {
     if (checkForAdmin()) {
-      setWindowState(WindowState.FILE_VIEW);
+      setWindowState(WindowState.FILE_SYSTEM);
       return;
     }
     setAdminState(AdminState.ERR);
