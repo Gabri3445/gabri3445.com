@@ -1,9 +1,13 @@
 import { FileNode } from "./FileSystem";
+import testBlogPost from "../../markdown/test.md?raw";
 
 export const fileSystemContent: FileNode[] = [
   {
     name: "/blog",
     type: "folder",
+    children: [
+      { name: "test.md", type: "file", markdownContents: testBlogPost },
+    ],
   },
   {
     name: "/photos",
