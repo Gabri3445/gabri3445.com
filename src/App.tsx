@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AdminStrip from "./components/AdminStrip/AdminStrip";
 import Button from "./components/Button/Button";
 import Login from "./components/Login/Login";
@@ -6,12 +5,16 @@ import ServerInfo from "./components/ServerInfo/ServerInfo";
 import ButtonList from "./components/ButtonList/ButtonList";
 import { AdminState, WindowState } from "./App.models";
 import FileSystem from "./components/FileSystem/FileSystem";
+import { useAdminStore } from "./stores/useAdminStore";
+import { useWindowStore } from "./stores/useWindowStore";
 
 function App() {
-  const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
-  const [windowState, setWindowState] = useState<WindowState>(
-    WindowState.FILE_VIEW,
-  );
+  //const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
+  //const [windowState, setWindowState] = useState<WindowState>(
+  //  WindowState.FILE_VIEW,
+  //);
+  const { adminState } = useAdminStore();
+  const { windowState, setWindowState } = useWindowStore();
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
@@ -29,19 +32,10 @@ function App() {
               </div>
             ) : null}
             <div className=" mt-8 grow flex flex-col justify-between">
-              {windowState === WindowState.LOGIN && (
-                <Login
-                  setAdminState={setAdminState}
-                  setWindowState={setWindowState}
-                />
-              )}
+              {windowState === WindowState.LOGIN && <Login />}
               {windowState === WindowState.MAIN && (
                 <div className="ml-6 mt-8">
-                  <ButtonList
-                    adminState={adminState}
-                    setAdminState={setAdminState}
-                    setWindowState={setWindowState}
-                  />
+                  <ButtonList />
                 </div>
               )}
               <div className="mb-2 ml-6">
