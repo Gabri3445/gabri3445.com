@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AdminStrip from "./components/AdminStrip/AdminStrip";
 import Button from "./components/Button/Button";
 import Login from "./components/Login/Login";
@@ -6,17 +5,27 @@ import ServerInfo from "./components/ServerInfo/ServerInfo";
 import ButtonList from "./components/ButtonList/ButtonList";
 import { AdminState, WindowState } from "./App.models";
 import FileSystem from "./components/FileSystem/FileSystem";
+import { useAdminStore } from "./stores/useAdminStore";
+import { useWindowStore } from "./stores/useWindowStore";
+import { useFileStore } from "./stores/useFileStore";
+import Markdown from "markdown-to-jsx";
 
 function App() {
-  const [adminState, setAdminState] = useState<AdminState>(AdminState.NONE);
-  const [windowState, setWindowState] = useState<WindowState>(WindowState.MAIN);
+  //const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
+  //const [windowState, setWindowState] = useState<WindowState>(
+  //  WindowState.FILE_VIEW,
+  //);
+  const { adminState } = useAdminStore();
+  const { windowState, setWindowState } = useWindowStore();
+  const { fileNode, setFileNode } = useFileStore();
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
         <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           DISPLAY
         </div>
-        {windowState !== WindowState.FILE_VIEW && (
+        {(windowState === WindowState.LOGIN ||
+          windowState === WindowState.MAIN) && (
           <div className="grow flex flex-col">
             <ServerInfo />
             {adminState === AdminState.ERR ||
@@ -26,19 +35,10 @@ function App() {
               </div>
             ) : null}
             <div className=" mt-8 grow flex flex-col justify-between">
-              {windowState === WindowState.LOGIN && (
-                <Login
-                  setAdminState={setAdminState}
-                  setWindowState={setWindowState}
-                />
-              )}
+              {windowState === WindowState.LOGIN && <Login />}
               {windowState === WindowState.MAIN && (
                 <div className="ml-6 mt-8">
-                  <ButtonList
-                    adminState={adminState}
-                    setAdminState={setAdminState}
-                    setWindowState={setWindowState}
-                  />
+                  <ButtonList />
                 </div>
               )}
               <div className="mb-2 ml-6">
@@ -54,7 +54,7 @@ function App() {
             </div>
           </div>
         )}
-        {windowState === WindowState.FILE_VIEW && (
+        {windowState === WindowState.FILE_SYSTEM && (
           <div className="grow flex flex-col">
             <div className="w-full flex flex-row justify-between">
               <div className="text-3xl mt-2 ml-1">gabri3445 PC File System</div>
@@ -70,6 +70,30 @@ function App() {
               </div>
             </div>
             <FileSystem />
+          </div>
+        )}
+        {windowState === WindowState.FILE_VIEW && (
+          <div className="grow flex flex-col">
+            <div className="w-full flex flex-row justify-between">
+              <div className="text-3xl mt-2 ml-1">{fileNode?.name}</div>
+              <div className="mt-2 mr-2">
+                <Button
+                  text="&lt;-" //TODO: center the dash char
+                  isBig={false}
+                  height="h-6"
+                  width="w-6"
+                  onClick={() => {
+                    setWindowState(WindowState.MAIN);
+                    setFileNode(null);
+                  }}
+                  centered={true}
+                ></Button>
+              </div>
+            </div>{" "}
+            {/*move the markdown renderer to its own component*/}
+            <div className="mt-2 ml-1 prose prose-invert font-sans">
+              <Markdown>{fileNode?.markdownContents}</Markdown>
+            </div>
           </div>
         )}
       </div>

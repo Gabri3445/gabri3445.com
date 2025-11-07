@@ -2,6 +2,8 @@ import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCallbackRef } from "use-callback-ref";
 import Button from "../Button/Button";
 import { AdminState, WindowState } from "../../App.models";
+import { useAdminStore } from "../../stores/useAdminStore";
+import { useWindowStore } from "../../stores/useWindowStore";
 
 enum LoginState {
   USERNAME,
@@ -11,12 +13,9 @@ enum LoginState {
   FAIL,
 }
 
-export interface LoginProps {
-  setAdminState: (state: AdminState) => void;
-  setWindowState: (state: WindowState) => void;
-}
-
-function Login({ setAdminState, setWindowState }: LoginProps) {
+function Login() {
+  const { setAdminState } = useAdminStore();
+  const { setWindowState } = useWindowStore();
   const usernameInput = useRef<HTMLInputElement>(null);
   const [username, setUsername] = useState("");
   const correctUsername = "admin";
