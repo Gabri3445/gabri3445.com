@@ -1,5 +1,12 @@
-import { FileNode } from "./FileSystem";
 import testBlogPost from "../../markdown/test.md?raw";
+
+export interface FileNode {
+  name: string;
+  type: "file" | "folder" | "link";
+  children?: FileNode[]; // Only present if it's a folder
+  url?: string; // Only present if it's a link
+  markdownContents?: string; // Only present if it's a file
+}
 
 export const fileSystemContent: FileNode[] = [
   {

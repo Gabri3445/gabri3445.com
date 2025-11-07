@@ -1,3 +1,3 @@
 # Hello world
 
-This is a test markdown file for the blog section.
+No idea what to write here for now.

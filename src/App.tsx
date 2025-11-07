@@ -7,6 +7,8 @@ import { AdminState, WindowState } from "./App.models";
 import FileSystem from "./components/FileSystem/FileSystem";
 import { useAdminStore } from "./stores/useAdminStore";
 import { useWindowStore } from "./stores/useWindowStore";
+import { useFileStore } from "./stores/useFileStore";
+import Markdown from "markdown-to-jsx";
 
 function App() {
   //const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
@@ -15,6 +17,7 @@ function App() {
   //);
   const { adminState } = useAdminStore();
   const { windowState, setWindowState } = useWindowStore();
+  const { fileNode, setFileNode } = useFileStore();
   return (
     <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
       <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
@@ -66,27 +69,43 @@ function App() {
                 ></Button>
               </div>
             </div>
-            {/*TODO: switch to markdown renderer when a file is selected; zustand?*/}
             <FileSystem />
           </div>
         )}
         {windowState === WindowState.FILE_VIEW && (
           <div className="grow flex flex-col">
             <div className="w-full flex flex-row justify-between">
-              <div className="text-3xl mt-2 ml-1">File name goes here</div>
+              <div className="text-3xl mt-2 ml-1">{fileNode?.name}</div>
               <div className="mt-2 mr-2">
                 <Button
                   text="&lt;-" //TODO: center the dash char
                   isBig={false}
                   height="h-6"
                   width="w-6"
-                  onClick={() => setWindowState(WindowState.MAIN)}
+                  onClick={() => {
+                    setWindowState(WindowState.MAIN);
+                    setFileNode(null);
+                  }}
                   centered={true}
                 ></Button>
               </div>
+            </div>{" "}
+            {/*move the markdown renderer to its own component*/}
+            <div className="mt-2 ml-1">
+              <Markdown
+                options={{
+                  overrides: {
+                    h1: {
+                      props: {
+                        className: "text-2xl",
+                      },
+                    },
+                  },
+                }}
+              >
+                {fileNode?.markdownContents}
+              </Markdown>
             </div>
-            {/*TODO: switch to markdown renderer when a file is selected; zustand?*/}
-            <div className="mt-2 ml-1">Test</div>
           </div>
         )}
       </div>
