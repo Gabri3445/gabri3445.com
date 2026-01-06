@@ -9,6 +9,7 @@ import { useAdminStore } from "./stores/useAdminStore";
 import { useWindowStore } from "./stores/useWindowStore";
 import { useFileStore } from "./stores/useFileStore";
 import Markdown from "markdown-to-jsx";
+import Terminal from "./components/Terminal/Terminal";
 
 function App() {
   //const [adminState, setAdminState] = useState<AdminState>(AdminState.ADMIN);
@@ -19,8 +20,8 @@ function App() {
   const { windowState, setWindowState } = useWindowStore();
   const { fileNode, setFileNode } = useFileStore();
   return (
-    <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none ">
-      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] m-5 flex flex-col">
+    <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none flex flex-row">
+      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] my-5 mr-0.5 ml-5 flex flex-col w-2/3">
         <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           DISPLAY
         </div>
@@ -56,7 +57,7 @@ function App() {
         )}
         {windowState === WindowState.FILE_SYSTEM && (
           <div className="grow flex flex-col overflow-hidden">
-            <div className="w-full flex flex-row justify-between flex-shrink-0">
+            <div className="w-full flex flex-row justify-between shrink-0">
               <div className="text-3xl mt-2 ml-1">gabri3445 PC File System</div>
               <div className="mt-2 mr-2">
                 <Button
@@ -96,6 +97,12 @@ function App() {
             </div>
           </div>
         )}
+      </div>
+      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] my-5 mr-5 ml-0.5 flex flex-col w-1/2">
+        <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
+          TERMINAL
+        </div>
+        <Terminal></Terminal>
       </div>
     </div>
   );
