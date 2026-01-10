@@ -44,8 +44,7 @@ function ButtonList() {
   };
   const openFileView = () => {
     if (checkForAdmin()) {
-      //TODO: Replace Later
-      //setWindowState(WindowState.FILE_SYSTEM);
+      navigate("/file-system");
       return;
     }
     setAdminState(AdminState.ERR);
