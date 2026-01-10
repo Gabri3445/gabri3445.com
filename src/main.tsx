@@ -24,7 +24,6 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/login" element={<Login />} />
           </Route>
         </Route>
-        <Route path="/s" element={<div>dsaadsdsa</div>} />
       </Routes>
     </StrictMode>
   </BrowserRouter>,
