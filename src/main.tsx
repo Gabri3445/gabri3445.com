@@ -7,6 +7,7 @@ import HomeLayout from "./components/Home/HomeLayout.tsx";
 import ButtonList from "./components/ButtonList/ButtonList.tsx";
 import Login from "./components/Login/Login.tsx";
 import FileSystemRoute from "./components/FileSystem/FileSystemRoute.tsx";
+import MarkdownRoute from "./components/Markdown/MarkdownRoute.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/login" element={<Login />} />
           </Route>
           <Route path="/file-system" element={<FileSystemRoute />}></Route>
+          <Route path="/file/:fileName" element={<MarkdownRoute />} />
         </Route>
       </Routes>
     </StrictMode>
