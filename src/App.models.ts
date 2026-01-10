@@ -4,10 +4,3 @@ export enum AdminState {
   LOGIN,
   ERR,
 }
-
-export enum WindowState {
-  MAIN,
-  LOGIN,
-  FILE_SYSTEM,
-  FILE_VIEW,
-}
