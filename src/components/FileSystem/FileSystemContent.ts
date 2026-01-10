@@ -25,6 +25,22 @@ export const fileSystemContent: FileNode[] = [
         type: "folder",
         children: [
           {
+            name: "/08",
+            type: "folder",
+            children: [
+              {
+                name: "MotoGP.lnk",
+                type: "link",
+                url: "https://photos.gabri3445.com/share/clNCSOTyLH0nGqVqaSNQcGs1OCEoAKyxYT52YwotLvu-PlxK_qgs57fiwDhBqmxs57U",
+              },
+              {
+                name: "Vienna.lnk",
+                type: "link",
+                url: "https://photos.gabri3445.com/share/1-DnK-hppbR03XT9ckrYeORiD18AUfbQhx1I29xeG9Fjc2LCIk7Ffulvps7z74ROopw",
+              },
+            ],
+          },
+          {
             name: "/06",
             type: "folder",
             children: [
@@ -64,9 +80,15 @@ export const fileSystemContent: FileNode[] = [
         type: "folder",
         children: [
           {
-            name: "Germany.lnk",
-            type: "link",
-            url: "https://photos.gabri3445.com/share/fmqI_WFtPJHweGqHi_5nm4sOvFP8UTsUu-yx292a_Z8Ln4iz7KxkExWySTiXksd8oWA",
+            name: "/08",
+            type: "folder",
+            children: [
+              {
+                name: "Germany.lnk",
+                type: "link",
+                url: "https://photos.gabri3445.com/share/fmqI_WFtPJHweGqHi_5nm4sOvFP8UTsUu-yx292a_Z8Ln4iz7KxkExWySTiXksd8oWA",
+              },
+            ],
           },
         ],
       },
