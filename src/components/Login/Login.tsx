@@ -1,9 +1,9 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCallbackRef } from "use-callback-ref";
 import Button from "../Button/Button";
-import { AdminState, WindowState } from "../../App.models";
+import { AdminState } from "../../App.models";
 import { useAdminStore } from "../../stores/useAdminStore";
-import { useWindowStore } from "../../stores/useWindowStore";
+import { useNavigate } from "react-router";
 
 enum LoginState {
   USERNAME,
@@ -15,7 +15,7 @@ enum LoginState {
 
 function Login() {
   const { setAdminState } = useAdminStore();
-  const { setWindowState } = useWindowStore();
+  const navigate = useNavigate();
   const usernameInput = useRef<HTMLInputElement>(null);
   const [username, setUsername] = useState("");
   const correctUsername = "admin";
@@ -172,7 +172,7 @@ function Login() {
               height="h-8"
               onClick={() => {
                 setAdminState(AdminState.ADMIN);
-                setWindowState(WindowState.MAIN);
+                navigate("/");
               }}
             />
           </div>
@@ -186,7 +186,7 @@ function Login() {
               width="w-44"
               height="h-[1.85rem]"
               onClick={() => {
-                setWindowState(WindowState.MAIN);
+                navigate("/");
               }}
             />
             <Button
@@ -217,7 +217,7 @@ function Login() {
           width="w-28"
           sideColor="bg-[#6c1a49]"
           onClick={() => {
-            setWindowState(WindowState.MAIN);
+            navigate("/");
           }}
         />
       </div>

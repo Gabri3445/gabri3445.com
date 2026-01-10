@@ -1,11 +1,11 @@
-import { AdminState, WindowState } from "../../App.models";
+import { useNavigate } from "react-router";
+import { AdminState } from "../../App.models";
 import { useAdminStore } from "../../stores/useAdminStore";
-import { useWindowStore } from "../../stores/useWindowStore";
 import Button from "../Button/Button";
 
 function ButtonList() {
   const { adminState, setAdminState } = useAdminStore();
-  const { setWindowState } = useWindowStore();
+  const navigate = useNavigate();
   const checkForAdmin = () => {
     if (adminState === AdminState.ADMIN) {
       return true;
@@ -44,7 +44,7 @@ function ButtonList() {
   };
   const openFileView = () => {
     if (checkForAdmin()) {
-      setWindowState(WindowState.FILE_SYSTEM);
+      navigate("/file-system");
       return;
     }
     setAdminState(AdminState.ERR);
@@ -56,7 +56,7 @@ function ButtonList() {
         isBig={true}
         sideColor={color(true)}
         height="h-12"
-        onClick={() => setWindowState(WindowState.LOGIN)}
+        onClick={() => navigate("/login")}
       />
       <Button
         text="Open Github"

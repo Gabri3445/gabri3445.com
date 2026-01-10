@@ -6,9 +6,8 @@ import { fileSystemContent } from "./FileSystemContent";
 */
 
 function FileSystem() {
-  //TODO: should probably set up overflow sooner then later; next time
   return (
-    <div className="w-full mt-4">
+    <div className="w-full mt-4 overflow-y-scroll h-0 flex-1">
       {fileSystemContent.map((content) => (
         <div key={content.name} className="mb-2">
           <FileTree node={content} level={1} />

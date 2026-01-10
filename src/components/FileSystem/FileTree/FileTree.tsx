@@ -1,14 +1,11 @@
 import { useState } from "react";
 import Button from "../../Button/Button";
 import { FileNode } from "../FileSystemContent";
-import { useWindowStore } from "../../../stores/useWindowStore";
-import { useFileStore } from "../../../stores/useFileStore";
-import { WindowState } from "../../../App.models";
+import { useNavigate } from "react-router";
 
 function FileTree({ node, level }: { node: FileNode; level: number }) {
   const [expanded, setExpanded] = useState(false);
-  const { setWindowState } = useWindowStore();
-  const { setFileNode } = useFileStore();
+  const navigate = useNavigate();
 
   if (node.type === "link") {
     return (
@@ -37,8 +34,8 @@ function FileTree({ node, level }: { node: FileNode; level: number }) {
           centered={false}
           sideColor="bg-[#837e84]"
           onClick={() => {
-            setWindowState(WindowState.FILE_VIEW);
-            setFileNode(node);
+            //setWindowState(WindowState.FILE_VIEW); TODO
+            navigate(`/file/${node.name}`);
           }} //switch to markown renderer
           addBorderLast={true}
         />
