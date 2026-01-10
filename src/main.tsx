@@ -1,10 +1,33 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import Layout from "./App.tsx";
 import "./index.css";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Home from "./components/Home/Home.tsx";
+import ButtonList from "./components/ButtonList/ButtonList.tsx";
+import Login from "./components/Login/Login.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <BrowserRouter>
+    <StrictMode>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route element={<Home />}>
+            <Route
+              path="/"
+              element={
+                <div className="ml-6 mt-8">
+                  <ButtonList />
+                </div>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+          </Route>
+        </Route>
+        <Route path="/s" element={<div>dsaadsdsa</div>} />
+      </Routes>
+    </StrictMode>
+  </BrowserRouter>,
 );
+
+// <App />
