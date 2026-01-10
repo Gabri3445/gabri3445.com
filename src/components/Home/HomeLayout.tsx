@@ -5,7 +5,7 @@ import AdminStrip from "../AdminStrip/AdminStrip";
 import Button from "../Button/Button";
 import ServerInfo from "../ServerInfo/ServerInfo";
 
-function Home() {
+function HomeLayout() {
   const { adminState } = useAdminStore();
   return (
     <div className="grow flex flex-col">
@@ -32,4 +32,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeLayout;
