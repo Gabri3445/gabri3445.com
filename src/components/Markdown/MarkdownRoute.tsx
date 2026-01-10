@@ -35,7 +35,7 @@ function MarkdownRoute() {
             height="h-6"
             width="w-6"
             onClick={() => {
-              navigate("/");
+              navigate("/file-system");
             }}
             centered={true}
           ></Button>
