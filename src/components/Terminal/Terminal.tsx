@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import CommandParser from "../../utils/commandParser";
 import { useTerminalStore } from "../../stores/useTerminalStore";
@@ -7,8 +7,11 @@ function Terminal() {
   const navigate = useNavigate();
   const terminalStore = useTerminalStore();
   const commandParser = new CommandParser(navigate, terminalStore);
+  useEffect(() => {
+    terminalStore.commandParser = commandParser;
+    terminalStore.commandParser.parseCommand("help", true);
+  }, []);
   //replace with text in reference image and
-  const [inputValue, setInputValue] = useState("");
   const input = useRef<HTMLInputElement>(null);
   return (
     <>
@@ -19,22 +22,25 @@ function Terminal() {
       </div>
       <div className="flex flex-row hover: ml-0.5">
         {terminalStore.hidePrompt ? null : (
-          <span className="ml-2">93.43.233.0@&gt; </span>
+          <span className="ml-2">{terminalStore.prompt}</span>
         )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
             //strip user \n
             //replace with proper parser
-            commandParser.parseCommand(inputValue);
-            input.current!.value = "";
+            commandParser.parseCommand(terminalStore.promptInput);
+            terminalStore.setPromptInput("");
           }}
           className="ml-2"
         >
           <input
             ref={input}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) => {
+              terminalStore.setPromptInput(e.target.value);
+            }}
             className="w-full focus:outline-none"
+            value={terminalStore.promptInput}
           />
         </form>
       </div>

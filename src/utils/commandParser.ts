@@ -9,20 +9,19 @@ export default class CommandParser {
     this.terminalStore = terminalStore;
   }
 
-  public parseCommand(command: string): void {
-    let multiStepCommand = false;
+  public parseCommand(command: string, hideCommandEcho: boolean = false): void {
     switch (command.trim().toLowerCase()) {
       case "help":
         this.terminalStore.appendToTerminalHistory(
-          "Available commands:\nhelp - Show this help message\nclear - Clear the terminal\nlogin",
+          "Available commands:\nhelp - Show this help message\nclear - Clear the terminal\nlogin - Requests a username an password to log in to the connected system",
         );
         break;
       case "clear":
       case "cls":
+        hideCommandEcho = true;
         this.terminalStore.setTerminalHistory("");
         break;
       case "login":
-        multiStepCommand = true;
         this.navigate("/login");
         break;
       default:
@@ -31,8 +30,8 @@ export default class CommandParser {
         );
         break;
     }
-    if (!multiStepCommand) {
-      this.terminalStore.appendToTerminalHistory(`93.43.233.0@> ${command}`);
+    if (!hideCommandEcho) {
+      this.terminalStore.appendToTerminalHistory(`93.43.233.0@>${command}`);
     }
   }
 

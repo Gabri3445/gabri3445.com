@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import { AdminState } from "../../App.models";
 import { useAdminStore } from "../../stores/useAdminStore";
 import { useNavigate } from "react-router";
+import { useTerminalStore } from "../../stores/useTerminalStore";
 
 enum LoginState {
   USERNAME,
@@ -14,6 +15,7 @@ enum LoginState {
 }
 
 function Login() {
+  const terminalStore = useTerminalStore();
   const { setAdminState } = useAdminStore();
   const navigate = useNavigate();
   const usernameInput = useRef<HTMLInputElement>(null);
@@ -70,6 +72,9 @@ function Login() {
         state.current = LoginState.CHECK;
       }
       if (document.activeElement === usernameInput.current) {
+        terminalStore.appendToTerminalHistory(`Username: ${username}`);
+        terminalStore.setPrompt("Password: ");
+        terminalStore.setPromptInput("");
         state.current = LoginState.PASSWORD;
         currentlySelected.current = passwordInput.current;
       }
@@ -77,10 +82,17 @@ function Login() {
         document.activeElement === passwordInput.current &&
         state.current === LoginState.CHECK
       ) {
+        terminalStore.appendToTerminalHistory(
+          `Password: ${"*".repeat(password.length)}`,
+        );
+        terminalStore.setPrompt("93.43.233.0@> ");
+        terminalStore.setPromptInput("");
         if (username === correctUsername && password === correctPassword) {
           state.current = LoginState.SUCCESS;
+          terminalStore.appendToTerminalHistory("Admin Login Successful");
         } else {
           state.current = LoginState.FAIL;
+          terminalStore.appendToTerminalHistory("Login Failed");
         }
         if (usernameInput.current && passwordInput.current) {
           usernameInput.current.disabled = true;
@@ -94,6 +106,7 @@ function Login() {
     currentlySelected.current = usernameInput.current;
     document.onclick = handleFocus;
     usernameInput.current?.focus();
+    terminalStore.setPrompt("Username: ");
     return () => {
       document.onclick = null;
     };
@@ -112,6 +125,12 @@ function Login() {
     }
   };
   const onLoginButtonClick = () => {
+    terminalStore.appendToTerminalHistory(`Username: ${correctUsername}`);
+    terminalStore.appendToTerminalHistory(
+      `Password: ${"*".repeat(correctPassword.length)}`,
+    );
+    terminalStore.appendToTerminalHistory("Admin Login Successful");
+    terminalStore.setPrompt("93.43.233.0@> ");
     state.current = LoginState.SUCCESS;
     if (usernameInput.current && passwordInput.current) {
       usernameInput.current.disabled = true;
@@ -121,6 +140,8 @@ function Login() {
     setPassword(correctPassword);
   };
   const onRetryButtonClick = () => {
+    terminalStore.appendToTerminalHistory("93.43.233.0@>login");
+    terminalStore.setPrompt("Username: ");
     state.current = LoginState.USERNAME;
     if (usernameInput.current && passwordInput.current) {
       usernameInput.current.disabled = false;
@@ -172,6 +193,9 @@ function Login() {
               height="h-8"
               onClick={() => {
                 setAdminState(AdminState.ADMIN);
+                terminalStore.setHidePrompt(false);
+                terminalStore.setPrompt("93.43.233.0@>");
+                terminalStore.setPromptInput("");
                 navigate("/");
               }}
             />
@@ -187,6 +211,9 @@ function Login() {
               height="h-[1.85rem]"
               onClick={() => {
                 navigate("/");
+                terminalStore.setHidePrompt(false);
+                terminalStore.setPrompt("93.43.233.0@>");
+                terminalStore.setPromptInput("");
               }}
             />
             <Button
@@ -217,6 +244,9 @@ function Login() {
           width="w-28"
           sideColor="bg-[#6c1a49]"
           onClick={() => {
+            terminalStore.setHidePrompt(false);
+            terminalStore.setPrompt("93.43.233.0@>");
+            terminalStore.setPromptInput("");
             navigate("/");
           }}
         />
@@ -224,6 +254,7 @@ function Login() {
       <input
         ref={usernameInput}
         onChange={(e) => {
+          terminalStore.setPromptInput(e.target.value);
           setUsername(e.target.value);
         }}
         onFocus={() => (currentlySelected.current = usernameInput.current)}
@@ -234,6 +265,7 @@ function Login() {
       <input
         ref={passwordInput}
         onChange={(e) => {
+          terminalStore.setPromptInput("*".repeat(e.target.value.length));
           setPassword(e.target.value);
         }}
         onFocus={() => (currentlySelected.current = passwordInput.current)}
