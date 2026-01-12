@@ -34,6 +34,4 @@ export default class CommandParser {
       this.terminalStore.appendToTerminalHistory(`93.43.233.0@>${command}`);
     }
   }
-
-  private handleLoginCommand(): void {}
 }
