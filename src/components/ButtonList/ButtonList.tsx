@@ -2,9 +2,11 @@ import { useNavigate } from "react-router";
 import { AdminState } from "../../App.models";
 import { useAdminStore } from "../../stores/useAdminStore";
 import Button from "../Button/Button";
+import { useTerminalStore } from "../../stores/useTerminalStore";
 
 function ButtonList() {
   const { adminState, setAdminState } = useAdminStore();
+  const terminalStore = useTerminalStore();
   const navigate = useNavigate();
   const checkForAdmin = () => {
     if (adminState === AdminState.ADMIN) {
@@ -56,7 +58,13 @@ function ButtonList() {
         isBig={true}
         sideColor={color(true)}
         height="h-12"
-        onClick={() => navigate("/login")}
+        onClick={() => {
+          if (terminalStore.commandParser) {
+            terminalStore.commandParser.parseCommand("login");
+          } else {
+            navigate("/login");
+          }
+        }}
       />
       <Button
         text="Open Github"
