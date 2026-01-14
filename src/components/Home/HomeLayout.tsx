@@ -17,7 +17,7 @@ function HomeLayout() {
       ) : null}
       <div className=" mt-8 grow flex flex-col justify-between">
         <Outlet />
-        <div className="mb-2 ml-6">
+        <div className="md:ml-6 ml-2 mr-6 md:mr-0 mb-2">
           <Button
             sideColor="bg-[#6c1a49]"
             isBig={false}

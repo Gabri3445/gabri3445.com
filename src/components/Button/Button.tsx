@@ -22,7 +22,7 @@ function Button({
   return (
     <div
       //last:mb-0
-      className={`${addBorderLast ? "" : "last:mb-0"} mb-2 flex flex-row border border-white/75 ${height ?? "h-fit"} ${width ?? "w-96"}
+      className={`${addBorderLast ? "" : "last:mb-0"} mb-2 flex flex-row border border-white/75 ${height ?? "h-fit"} ${width ?? "md:w-96 w-full"}
       bg-[#36313a]/70 hover:bg-[#59545c]/70 active:bg-[#252127]/70`}
       onClick={onClick}
     >

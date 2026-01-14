@@ -207,7 +207,7 @@ function Login() {
               text="Back"
               isBig={true}
               sideColor="bg-black"
-              width="w-44"
+              width="md:w-44 w-32"
               height="h-[1.85rem]"
               onClick={() => {
                 navigate("/");
@@ -220,7 +220,7 @@ function Login() {
               text="Retry"
               isBig={true}
               sideColor="bg-black"
-              width="w-44"
+              width="md:w-44 w-32"
               height="h-[1.85rem]"
               onClick={onRetryButtonClick}
             />
@@ -228,13 +228,13 @@ function Login() {
         ) : null}
       </div>
       <div
-        className={`flex flex-row mt-4 ml-6 gap-7 ${state.current === LoginState.SUCCESS || state.current === LoginState.FAIL ? "hidden" : ""}`}
+        className={`flex flex-row mt-4 md:ml-6 ml-2 gap-7  ${state.current === LoginState.SUCCESS || state.current === LoginState.FAIL ? "hidden" : ""}`}
       >
         {/*bit of hack to make sure the text doesn't overflow*/}
         <Button
           text={`Login - User: ${correctUsername} Pass: ${correctPassword}`}
           isBig={true}
-          width="min-w-80 pr-3"
+          width="md:min-w-80 w-1/2 pr-3"
           sideColor="bg-black"
           onClick={onLoginButtonClick}
         />
@@ -270,8 +270,9 @@ function Login() {
         }}
         onFocus={() => (currentlySelected.current = passwordInput.current)}
         onBlur={onBlur}
-        type="text"
+        type="password"
         className="absolute -left-[9999px] pass"
+        autoComplete="off"
       ></input>
     </div>
   );

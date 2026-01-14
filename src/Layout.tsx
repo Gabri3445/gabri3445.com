@@ -7,14 +7,14 @@ function Layout() {
   //  WindowState.FILE_VIEW,
   //);
   return (
-    <div className="bg-kaguya bg-cover bg-center h-screen text-white overflow-hidden select-none flex flex-row">
-      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] my-5 mr-0.5 ml-5 flex flex-col w-2/3">
+    <div className="bg-kaguya bg-cover bg-center h-screen text-white md:overflow-hidden select-none flex flex-row">
+      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] my-5 md:mr-0.5 md:ml-5 mr-2 ml-2 flex flex-col md:w-2/3 w-screen">
         <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           DISPLAY
         </div>
         <Outlet />
       </div>
-      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] my-5 mr-5 ml-0.5 flex flex-col w-1/2">
+      <div className="border h-[calc(100vh-2.50rem)] border-[#26b1e1] my-5 mr-5 ml-0.5 flex-col w-1/2 hidden md:flex">
         <div className="w-full bg-cyan-500/75 pl-1 text-xs h-fits leading-tight text-[#7febf7]">
           TERMINAL
         </div>

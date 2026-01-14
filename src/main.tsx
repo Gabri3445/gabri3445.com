@@ -18,7 +18,7 @@ createRoot(document.getElementById("root")!).render(
             <Route
               path="/"
               element={
-                <div className="ml-6 mt-8">
+                <div className="md:ml-6 ml-2 mr-6 md:mr-0 mt-8">
                   <ButtonList />
                 </div>
               }

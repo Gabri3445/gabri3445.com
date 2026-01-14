@@ -5,7 +5,7 @@ export interface AdminStripProps {
 function AdminStrip({ error }: AdminStripProps) {
   return (
     <div
-      className={`w-full text-center ${error ? "bg-[#691144]/90" : "bg-[#fecafe]"}`}
+      className={`w-full text-center text-sm md:text-base ${error ? "bg-[#691144]/90" : "bg-[#fecafe]"}`}
     >
       <span className={error ? "text-[#bf0541]" : "text-black"}>
         {error

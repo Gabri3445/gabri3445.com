@@ -1,15 +1,15 @@
 function ServerInfo() {
   return (
-    <div className="flex flex-row mt-2.5 ml-5">
+    <div className="flex flex-row mt-2.5 md:ml-5 ml-2.5">
       <div>
         <img src="/server.png"></img>
       </div>
-      <div className="block ml-28">
-        <div className="text-3xl">Connected to</div>
-        <div className="text-3xl">
+      <div className="block md:ml-28 ml-14">
+        <div className="md:text-3xl text-xl">Connected to</div>
+        <div className="md:text-3xl text-xl">
           gabri3445 server, version {__APP_VERSION__}
         </div>
-        <div className="text-xl">@ 93.43.233.0</div>
+        <div className="md:text-xl">@ 93.43.233.0</div>
       </div>
     </div>
   );
